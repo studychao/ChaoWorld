@@ -1,9 +1,4 @@
 
-
-/*
- * Base structure
- */
-
 html,
 body {
   height: 100%;
@@ -15,8 +10,11 @@ body {
   text-indent:2em;
 }
 
-.h2deco{
-	border-bottom: 1px solid white;
+.deco{
+	margin-left:20px;
+	border-left: 3px white solid;
+	color: white;
+	text-indent:10px;
 }
 
 
