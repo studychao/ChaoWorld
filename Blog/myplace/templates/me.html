@@ -5,61 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Chao-Me</title>
+    <title>Chao</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="../static/css/me.css" rel="stylesheet">
+
+    <style type="text/css">
     </style>
   </head>
 
-  <body>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Me</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <body class="text-center">
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="../">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Me</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Notes</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">SearchForNotes</button>
-    </form>
-  </div>
-</nav>
-     
-      <h2 class="deco"> Me</h2>
-      <div class="self-introduction">
-        <p>Born in 1997.Shanghai.</p>
-        <p>A student in Ecust.</p>
-        <p>Music lover.Concert lover.Apple Product lover.</p>
-        <p>Dear Fighter in real life.</p>
-      </div>
-      <h2 class="deco">Academic Achievement</h2>
-      <div class="self-introduction">
-        <p>Ecust First-Class Scholarship</p>
-        <p>Ecust Elite Student of 2016-2017</p>
-      </div>
-      <h2 class="deco">Works</h2>
-      <div class="self-introduction">
-        <p>好医生信息平台<a href="https://github.com/studychao/HYS">github地址</a></p>
-        <p>安卓计算器app<a href=""></a>【暂无链接】【仅适配华为Mate 9 Pro</p>
-      </div>
-  </body>
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="">
+        <div class="inner">
+          <h3 class="masthead-brand">Chao</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link" href="../">Home</a>
+            <a class="nav-link active" href="#">Me</a>
+            <a class="nav-link" href="{% url 'myplace:blog' %}">Notes</a>
+          </nav>
+        </div>
+      </header>
+
+        <main role="main" class="inner cover">
+        <h3>...</h3>
+        <p class="lead">Born in 1997.</p>
+        <p class="lead">Shanghai.</p>
+        <p class="lead">A Student in Ecust.</p>
+        <p class="lead">Music Lover.Technology Geek.</p>
+        <p class="lead"><a href="../updateplan" style="color: black">Look Up To the Future.</a></p>
+        <h3>Academic</h3>
+        <p class="lead">Ecust First-Class Scholarship.</p>
+        <p class="lead">Ecust Elite Student 2016-2017.</p>
+        <h3>Works</h3>
+        <a href="https://github.com/studychao/HYS" style="color: black;"><u>好医生信息平台</u></a></p>
+
+      </main>
+      
+  
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          Read.Code.Love.
+        </div>
+      </footer>
+    </div>
 
 
     <!-- Bootstrap core JavaScript
