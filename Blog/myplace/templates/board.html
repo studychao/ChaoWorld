@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <p>给我留言吧:)</p>
+{% endblock main %}
+{% block toc %}
+    <div class="widget widget-content">
+        <h3 class="widget-title">文章目录</h3>
+        {{ post.toc|safe}}
+    </div>
+{% endblock toc %}
