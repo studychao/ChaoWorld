@@ -1,0 +1,317 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <div id="main" style="width: 600px;height:600px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+        text: '我的一天'
+    },
+            backgroundColor: '#FFFFFF',
+            visualMap: {
+        show: false,
+        min: 80,
+        max: 600,
+        inRange: {
+            colorLightness: [0, 1]
+        }
+    },
+    series : [
+        {
+            name: '访问来源',
+            type: 'pie',
+            radius: '60%',
+            data:[
+                {value:235, name:'学习'},
+                {value:274, name:'阅读'},
+                {value:310, name:'发呆'},
+                {value:335, name:'思考'},
+                {value:400, name:'睡觉'}
+            ],
+            roseType: 'angle',
+            label: {
+                normal: {
+                    textStyle: {
+                        color: '#c23531'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    lineStyle: {
+                        color: '#FFFFFF'
+                    }
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: '#c23531',
+                
+    
+                }
+            }
+        }
+    ]
+};
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+
+
+    <div id="container" style="width: 600px;height:600px;"></div>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+var data = [
+     {name: '青岛', value: 10},
+     {name: '拉萨', value: 40},
+     {name: '上海', value: 100},
+     {name: '厦门', value: 20},
+     {name: '福州', value: 40},
+     {name: '昆山', value: 30},
+     {name: '宁波', value: 40},
+     {name: '常熟', value: 10},
+     {name: '苏州', value: 40},
+     {name: '呼和浩特', value: 10},
+     {name: '成都', value: 20},
+     {name: '无锡', value: 10},
+     {name: '北京', value: 40},
+     {name: '包头', value: 60},
+     {name: '杭州', value: 50},
+     {name: '兰州', value: 40},
+     {name: '天津', value: 20},
+     {name: '义乌', value: 40},
+];
+var geoCoordMap = {
+    '青岛':[120.33,36.07],
+    '拉萨':[91.11,29.97],
+    '上海':[121.48,31.22],
+    '厦门':[118.1,24.46],
+    '福州':[119.3,26.08],
+    '昆山':[120.95,31.39],
+    '宁波':[121.56,29.86],
+    '常熟':[120.74,31.64],
+    '东莞':[113.75,23.04],
+    '苏州':[120.62,31.32],
+    '呼和浩特':[111.65,40.82],
+    '成都':[104.06,30.67],
+    '无锡':[120.29,31.59],
+    '北京':[116.46,39.92],
+    '包头':[110,40.58],
+    '杭州':[120.19,30.26],
+    '兰州':[103.73,36.03],
+    '天津':[117.2,39.13],
+    '义乌':[120.06,29.32],
+};
+
+var convertData = function (data) {
+    var res = [];
+    for (var i = 0; i < data.length; i++) {
+        var geoCoord = geoCoordMap[data[i].name];
+        if (geoCoord) {
+            res.push({
+                name: data[i].name,
+                value: geoCoord.concat(data[i].value)
+            });
+        }
+    }
+    return res;
+};
+
+option = {
+    title: {
+        text: '去过的城市',
+        left: 'left'
+    },
+    tooltip : {
+        trigger: 'item'
+    },
+    bmap: {
+        center: [104.114129, 37.550339],
+        zoom: 5,
+        roam: true,
+        mapStyle: {
+            styleJson: [{
+                'featureType': 'water',
+                'elementType': 'all',
+                'stylers': {
+                    'color': '#d1d1d1'
+                }
+            }, {
+                'featureType': 'land',
+                'elementType': 'all',
+                'stylers': {
+                    'color': '#f3f3f3'
+                }
+            }, {
+                'featureType': 'railway',
+                'elementType': 'all',
+                'stylers': {
+                    'visibility': 'off'
+                }
+            }, {
+                'featureType': 'highway',
+                'elementType': 'all',
+                'stylers': {
+                    'color': '#fdfdfd'
+                }
+            }, {
+                'featureType': 'highway',
+                'elementType': 'labels',
+                'stylers': {
+                    'visibility': 'off'
+                }
+            }, {
+                'featureType': 'arterial',
+                'elementType': 'geometry',
+                'stylers': {
+                    'color': '#fefefe'
+                }
+            }, {
+                'featureType': 'arterial',
+                'elementType': 'geometry.fill',
+                'stylers': {
+                    'color': '#fefefe'
+                }
+            }, {
+                'featureType': 'poi',
+                'elementType': 'all',
+                'stylers': {
+                    'visibility': 'off'
+                }
+            }, {
+                'featureType': 'green',
+                'elementType': 'all',
+                'stylers': {
+                    'visibility': 'off'
+                }
+            }, {
+                'featureType': 'subway',
+                'elementType': 'all',
+                'stylers': {
+                    'visibility': 'off'
+                }
+            }, {
+                'featureType': 'manmade',
+                'elementType': 'all',
+                'stylers': {
+                    'color': '#d1d1d1'
+                }
+            }, {
+                'featureType': 'local',
+                'elementType': 'all',
+                'stylers': {
+                    'color': '#d1d1d1'
+                }
+            }, {
+                'featureType': 'arterial',
+                'elementType': 'labels',
+                'stylers': {
+                    'visibility': 'off'
+                }
+            }, {
+                'featureType': 'boundary',
+                'elementType': 'all',
+                'stylers': {
+                    'color': '#fefefe'
+                }
+            }, {
+                'featureType': 'building',
+                'elementType': 'all',
+                'stylers': {
+                    'color': '#d1d1d1'
+                }
+            }, {
+                'featureType': 'label',
+                'elementType': 'labels.text.fill',
+                'stylers': {
+                    'color': '#999999'
+                }
+            }]
+        }
+    },
+    series : [
+        {
+            name: 'pm2.5',
+            type: 'scatter',
+            coordinateSystem: 'bmap',
+            data: convertData(data),
+            symbolSize: function (val) {
+                return val[2] / 10;
+            },
+            label: {
+                normal: {
+                    formatter: '{b}',
+                    position: 'right',
+                    show: false
+                },
+                emphasis: {
+                    show: true
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: 'purple'
+                }
+            }
+        },
+        {
+            name: 'Top 5',
+            type: 'effectScatter',
+            coordinateSystem: 'bmap',
+            data: convertData(data.sort(function (a, b) {
+                return b.value - a.value;
+            }).slice(0, 6)),
+            symbolSize: function (val) {
+                return val[2] / 10;
+            },
+            showEffectOn: 'render',
+            rippleEffect: {
+                brushType: 'stroke'
+            },
+            hoverAnimation: true,
+            label: {
+                normal: {
+                    formatter: '{b}',
+                    position: 'right',
+                    show: true
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: 'purple',
+                    shadowBlur: 10,
+                    shadowColor: '#333'
+                }
+            },
+            zlevel: 1
+        }
+    ]
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+    </script>
+{% endblock main %}
+{% block toc %}
+<p>数据目录</p>
+<a href="#main">·我的一天</a>
+<br>
+<a href="#main">·我去过的城市</a>
+{% endblock toc %}

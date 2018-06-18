@@ -24,4 +24,3 @@ def post_comment(request,post_pk):
 
     return redirect(post)
 
-# Create your views here.

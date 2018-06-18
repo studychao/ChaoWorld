@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myplace',
     'comments',
+    'board',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +122,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+AUTH_USER_MODEL = 'user.User'
+LANGUAGE_CODE = 'zh-hans'
+TIME_ZONE = 'Asia/Shanghai'

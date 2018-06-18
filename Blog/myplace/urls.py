@@ -12,4 +12,6 @@ urlpatterns = [
                url(r'^search/$', views.search, name='search'),
                url(r'^$',views.index,name='index'),
                url(r'^me/$',views.me,name='me'),
+               url(r'^board/$',views.board,name='board'),
+               url(r'^data/$',views.data,name='data'),
                ]

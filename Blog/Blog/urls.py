@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'',include('myplace.urls',namespace="blog")),
     url(r'',include('comments.urls')),
+    url(r'',include('board.urls')),
     url(r'^updateplan/$',myplace_views.updateplan,name='me'),
     url(r'^all/rss/$', AllPostsRssFeed(), name='rss'),
 ]

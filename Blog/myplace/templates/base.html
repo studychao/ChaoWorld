@@ -19,6 +19,15 @@
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/pace.min.js'%}"></script>
     <script src="{% static 'js/modernizr.custom.js'%}"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/4.1.0.rc2/echarts.js"></script>
 </head>
 
 <body>
@@ -40,10 +49,9 @@
 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="cl-effect-11"><a href="{% url 'myplace:index' %}" data-hover="Home">Home</a></li>
-                            <li class="cl-effect-11"><a href="full-width.html" data-hover="Me">Me</a></li>
-                            <li class="cl-effect-11"><a href="{% url 'myplace:blog' %}" data-hover="Notes">Notes</a></li>
-                            <li class="cl-effect-11"><a href="{% url 'myplace:blog' %}" data-hover="Board">Board</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'myplace:blog' %}" data-hover="Home">Home</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'myplace:board' %}" data-hover="Board">Board</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'myplace:data' %}" data-hover="Data">Data</a></li>
                      
                         </ul>
                     </div><!-- /.navbar-collapse -->

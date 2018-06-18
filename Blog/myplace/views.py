@@ -5,6 +5,8 @@ from django.shortcuts import render,get_object_or_404
 from .models import Post,Category,Tag
 from comments.forms import CommentForm
 from django.db.models import Q
+from board.forms import commentform
+from board.models import usercomment
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -99,3 +101,13 @@ def search(request):
     post_list = Post.objects.filter(Q(title__icontains=q) | Q(body__icontains=q))
 
     return render(request,'blog.html',{'error_msg':error_msg,'post_list':post_list})
+
+
+def board(request):
+    form = commentform()
+    comment_list = usercomment.objects.all()
+    context = {'form':form,'comment_list': comment_list }
+    return render(request,'board.html',context=context)
+
+def data(request):
+    return render(request,'data.html')
