@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div style="width:100%;border-bottom:1px #CCC solid">
+<h2 style="">欢迎您登陆我的博客</h2>
+</div>
+<form class="form" action="{% url 'login' %}" method="post">
+  {% csrf_token %}
+  {% for field in form %}
+  <div style="">{{ field.label_tag }}</div>
+  <div type="email">{{ field }}</div>
+    {{ field.errors }}
+    {% if field.help_text %}
+        <p class="help text-small text-muted">{{ field.help_text|safe }}</p>
+    {% endif %}
+  {% endfor %}
+  <button type="submit" class="btn-sm btn-primary" style="margin-top:15px;">登陆</button>
+  <input type="hidden" name="next" value="{{ next }}"/>
+  <p>没有账号？<a href="{% url 'user:register' %}" style="color:#0066FF;">注册</a></p>
+</form>
+{% endblock main %}
+
+{% block toc %}
+    <p>hi</p>
+{% endblock toc %}

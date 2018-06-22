@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block main %}
+{% if user.is_authenticated %}
+<p>欢迎您，{{ request.user.username }}
+    <a href="{% url 'logout' %}?next={{ request.path }}"><img style="width:20px;height:20px;" src="{% static 'out.png' %}">登出</a></p>
+<p><img src="{% static 'change.png' %}" style="width:20px;height:20px;"/><a href="{% url 'user:infochange' %}">个人资料修改</a></p>
+<p><img src="{% static 'score.png' %}" style="width:20px;height:20px;"/>互动指数：</p>
+<div class="progress" style="width:60%;">
+  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+    60
+  </div>
+</div>
+ <button type="button" class="btn-sm btn-warning" title="Tips"
+            data-container="body" data-toggle="popover" data-placement="bottom"
+            data-content="你在本博客的各种操作都可以增加互动指数，互动指数越高说明你越关心博主哦.">
+        什么是互动指数？
+    </button>
+    <script>
+$(function () {
+	$("[data-toggle='popover']").popover();
+});
+</script>
+ <button type="button" class="btn-sm btn-warning" title="Tips"
+            data-container="body" data-toggle="popover" data-placement="right"
+            data-content="1.阅读文章 2.留言板评论 3.文章评论">
+        如何增加互动指数？
+    </button>
+{% else %}
+<p>您尚未登陆</p>
+<p>请先登陆网站，才可体验众多附加功能喔</p>
+{% endif %}
+{% endblock main %}
+{% block toc %}
+    <img src="{% static 'alarm.png' %}" style="width:17px;height:17px;margin-bottom:3px;"/><span style="margin-left:10px;">通知</span>
+{% endblock toc %}

@@ -1,7 +1,19 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block main %}
-
+<div class="all" style="position: relative">
+      {% if messages %}
+    <div style="background-color: #EEEEEE">
+    <ul class="messages">
+        {% for message in messages %}
+        <li class="{{ message.tags }}">
+            {{ message|safe }}
+            <a href="." class="close">✖</a>
+        </li>
+        {% endfor %}
+    </ul>
+  </div>
+    {% endif %}
     <ul class="comment-list list-unstyled">
   {% for comment in comment_list %}
   <li class="comment-item">
@@ -23,6 +35,36 @@
 </ul>
 <br>
 <h1>给我留言吧:)</h1>
+{% if user.is_authenticated %}
+<form action="{% url 'board:user_comment'%}" method="post" class="comment-form">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-md-4">
+      <label for="{{ form.name.id_for_label }}">名字：</label>
+      {{ user.username }}
+      <input type="text" name="name" value="{{ request.user.username }}" class="sr-only" >
+    </div>
+    <div class="col-md-4">
+      <label for="{{ form.email.id_for_label }}">EMAIL：</label>
+      {{ user.email }}
+      <input type="text" name="email" value="{{ request.user.email }}" class="sr-only" >
+    </div>
+    <div class="col-md-12">
+      <label for="{{ form.text.id_for_label }}">评论：</label>
+      {{ form.text }}
+      {{ form.text.errors }}
+      <button type="submit" id="leavecomment" class="comment-btn">发表</button>
+        <script>
+  toastr.options.positionClass = 'toast-top-center';
+    　if ({{ show }} == 1)
+    {
+     toastr.success('互动指数+1');
+     }
+  </script>
+    </div>
+  </div>    <!-- row -->
+</form>
+{% else %}
     <form action="{% url 'board:user_comment'%}" method="post" class="comment-form">
   {% csrf_token %}
   <div class="row">
@@ -44,6 +86,8 @@
     </div>
   </div>    <!-- row -->
 </form>
+
+{% endif %}
 {% endblock main %}
 {% block toc %}
     <div class="widget widget-content">

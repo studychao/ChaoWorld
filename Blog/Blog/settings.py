@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'Blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ChaoWorld',
+        'USER': 'root',
+        'PASSWORD': 'CCaXX970910',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
@@ -125,3 +129,5 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'user.User'
 LANGUAGE_CODE = 'zh-hans'
 TIME_ZONE = 'Asia/Shanghai'
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '../dashboard'

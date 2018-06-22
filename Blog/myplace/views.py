@@ -104,10 +104,14 @@ def search(request):
 
 
 def board(request):
+    show = request.GET.get('show')
     form = commentform()
     comment_list = usercomment.objects.all()
-    context = {'form':form,'comment_list': comment_list }
-    return render(request,'board.html',context=context)
+    if show:
+        context = {'form':form,'comment_list': comment_list,'show':show}
+    else:
+        context = {'form': form, 'comment_list': comment_list}
+    return render(request, 'board.html', context=context)
 
 def data(request):
     return render(request,'data.html')

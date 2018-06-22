@@ -7,3 +7,8 @@ class User(AbstractUser):
     class Meta(AbstractUser.Meta):
         pass
 
+class Addinfo(models.Model):
+    nickname =models.CharField(max_length=50,blank=True)
+    username =models.CharField(max_length=50,blank=True)
+
+

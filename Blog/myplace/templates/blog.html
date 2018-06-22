@@ -44,8 +44,11 @@
                             <li class="cl-effect-11"><a href="{% url 'myplace:blog' %}" data-hover="Home">Home</a></li>
                             <li class="cl-effect-11"><a href="{% url 'myplace:board' %}" data-hover="Board">Board</a></li>
                             <li class="cl-effect-11"><a href="{% url 'myplace:data' %}" data-hover="Data">Data</a></li>
-
-                     
+                            {% if user.is_authenticated %}
+                            <li class="cl-effect-11"><a href="{% url 'user:dashboard' %}?next={{ request.path }}" data-hover=""><img src="{% static 'account.png' %}" style="width:19px;height:19px;" /></a></li>
+                            {% else %}
+                            <li class="cl-effect-11"><a href="{% url 'login' %}?next={{ request.path }}" data-hover=""><img src="{% static 'account.png' %}" style="width:19px;height:19px;" /></a></li>
+                            {% endif %}
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </nav>

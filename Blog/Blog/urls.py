@@ -24,4 +24,6 @@ urlpatterns = [
     url(r'',include('board.urls')),
     url(r'^updateplan/$',myplace_views.updateplan,name='me'),
     url(r'^all/rss/$', AllPostsRssFeed(), name='rss'),
+    url(r'^user/',include('user.urls')),
+    url(r'^user/',include('django.contrib.auth.urls'))
 ]
