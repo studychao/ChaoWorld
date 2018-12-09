@@ -80,12 +80,12 @@ WSGI_APPLICATION = 'Blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ChaoWorld',
+        'NAME': 'chaoworld',
         'USER': 'root',
-        'PASSWORD': 'CCaXX970910',
+        'PASSWORD': 'chaoworld',
         'HOST': '127.0.0.1',
         'PORT': '3306',
-    }
+}
 }
 
 
